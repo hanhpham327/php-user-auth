@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+    
+    var ingredientList="Cyclopentasiloxane, Aqua/Water, Polypropylsilsesquioxane, Isododecane, Dimethicone, C30-45 Alkyldimethylsilyl Polypropylsilsesquioxane, Peg-10 Dimethicone, Glycerin, Silica,Dimethicone/Polyglycerin-3 Crosspolymer, Sodium Chloride, Nylon 12, Phenoxyethanol, Disteardimonium Hectorite, Disodium Stearoyl Glutamate, Cyclomethicone, Chlorphenesin, Ethylparaben, Disodium Edta, Acrylonitrile/Methyl Methacrylate/Vinylidene ChlorideCopolymer, Mica, Aluminum Hydroxide, Dipropylene Glycol, Isobutane, Paraffin, Sodium Citrate, Tocopherol, Isopropyl Alcohol,[+/- May Contain CI 77891 / Titanium Dioxide, CI 77491, CI 77492, CI 77499/Iron Oxides ] G8"
+    var Arr=[];
+    var stringHolder='';
+    function parseWords(ingredientList){
+        for (var i=0;i<ingredientList.length;i++){
+            if (ingredientList[i]!==','||i===ingredientList.length-1){
+            stringHolder=stringHolder+ingredientList[i]      
+            }
+            if (i===ingredientList.length-1 || ingredientList[i]===' ' )
+            {
+            Arr.push(stringHolder+' ')
+            stringHolder=''
+            }
+        }
+        console.log(Arr.join(''));
+        }
+    parseWords(ingredientList)
+    
+    //omer will give me an array with certain amounts of elements
+    //take array and make the associative 
+    
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
+

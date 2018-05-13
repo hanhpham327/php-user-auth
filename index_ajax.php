@@ -14,6 +14,14 @@
         <h1 class="center">PHP User Authentication</h1>
         <h2 class="center">Now with AJAX</h2>
         <h2 class="center red-text darken-2" id="auth-error"> </h2>
+        <h2 class="center red-text darken-2" id="auth-error2"> </h2>
+        <h2 class="center red-text darken-2" id="auth-error3"> </h2>
+        <h2 class="center red-text darken-2" id="auth-error4"> </h2>
+        <h2 class="center red-text darken-2" id="auth-error5"> </h2>
+        <h2 class="center red-text darken-2" id="auth-error6"> </h2>
+        <!-- <h2 class="center red-text darken-2" id="auth-error7"> </h2>
+        <h2 class="center red-text darken-2" id="auth-error8"> </h2> -->
+
 
         <div class="row">
             <form class="column s12">
@@ -22,11 +30,7 @@
                         <input type="text" id="username" name="username">
                         <label for="username" >Username</label>
                         <!-- name property is to send data backend -->
-                    </div>
-                    <div class="input-field col s6">
-                        <input type="text" id="password" name="password">
-                        <label for="password" >Password</label>
-                    </div>
+                    </div>                    
                     <div class="row-center">
                         <button type="button" class="btn" id="sign-in">Sign In </button>
                 </div>
@@ -38,7 +42,6 @@
         $('#sign-in').click(()=>{
             const dataToSend={
                 username:$('#username').val(),
-                password:$('#password').val()
             };
                 
             $.ajax({
@@ -47,20 +50,32 @@
                 dataType:'JSON',
                 method:'POST',
                 success:resp=>{
-                    console.log('Server Response: ', resp);
+                    console.log('Server Response:', resp);
                     if (resp.success){
-                        window.location.href='/profile.php';
+                        var ingredientList='';
+                        console.log('Server Response:', resp);
+                        // var showDoMProduct = resp.user
+                        // $('#auth-error').text('Name: '+JSON.stringify(resp.user['Name']))
+                        // $('#auth-error2').text('Categories: '+JSON.stringify(resp.user['Categories']))
+                        // $('#auth-error3').text('Brand: '+JSON.stringify(resp.user['Brand']))
+                        // $('#auth-error4').text('Detail: '+JSON.stringify(resp.user['Detail']))
+                        // $('#auth-error5').text('Price: '+JSON.stringify(resp.user['Price']))
+                        // $('#auth-error6').text('Ingredients: '+JSON.stringify(resp.user['Ingredients']))
+                        ingredientList=(JSON.stringify(resp.user['Ingredients']))
+                        console.log(ingredientList)
+                        // $('#auth-error7').text('Gentle: '+JSON.stringify(resp.user['Name']))
+                        // $('#auth-error8').text('Safety: '+JSON.stringify(resp.user['Categories']))
+                        // console.log()
                     } else {
                         $('#auth-error').text(resp.error)
                     }
                 },
-                error:resp=>{
-                    console.log('Error: ',resp)
-                }
+               
             
             })
         })
 
-
+//make a while loop, for loop runs through ingrediant list 
+//its going to run through each letter, stores into an array, stops at a comma, doesn't start the comma
     </script>
 </html>
